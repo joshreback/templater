@@ -1,6 +1,12 @@
+module CmsHelper
+end
+
 class CmsController < ActionController::Metal
-  include ActionController::Rendering
+  include AbstractController::Rendering
   include AbstractController::Helpers
+  include ActionView::Layouts
+
+  layout "cms"
 
   prepend_view_path SqlTemplate::Resolver.instance
 
@@ -9,7 +15,4 @@ class CmsController < ActionController::Metal
   def respond
     render template: params[:page]
   end
-end
-
-module CmsHelper
 end
